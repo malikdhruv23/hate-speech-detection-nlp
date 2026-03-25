@@ -35,3 +35,19 @@ y_pred = model.predict(X_test_tfidf)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n")
 print(classification_report(y_test, y_pred))
+
+import pickle
+import os
+
+# Create models folder
+os.makedirs("models", exist_ok=True)
+
+# Save model
+with open("models/model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+# Save vectorizer
+with open("models/tfidf.pkl", "wb") as f:
+    pickle.dump(tfidf, f)
+
+print("✅ Model and TF-IDF saved!")
